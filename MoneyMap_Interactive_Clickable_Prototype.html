@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MoneyMap — Interactive Prototype</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f5f7fa;font-family:Arial,sans-serif;color:#101828}
+button{font:inherit}
+.shell{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:25px}
+.app{width:min(1280px,100%);min-height:760px;background:#fff;border:1px solid #d0d5dd;border-radius:25px;overflow:hidden;box-shadow:0 20px 60px #10182820;display:flex}
+.side{width:250px;background:#f8fafc;padding:35px 20px}
+.brand{font-size:27px;font-weight:800;margin:0 10px}
+.sub{font-size:12px;color:#667085;margin:7px 10px 35px}
+.nav button{display:block;width:100%;text-align:left;border:0;background:transparent;padding:14px 15px;border-radius:12px;margin:4px 0;color:#344054;cursor:pointer}
+.nav button:hover,.nav button.active{background:#101828;color:#fff}
+.main{flex:1;padding:38px}
+.top{display:flex;justify-content:space-between;align-items:center}
+h1{font-size:30px;margin:0 0 8px}
+h2{font-size:25px}
+.muted{color:#667085}
+.panel{display:none}
+.panel.active{display:block}
+.balance{margin-top:30px;background:#101828;color:#fff;border-radius:20px;padding:30px}
+.balance small{color:#d0d5dd}
+.amount{font-size:38px;font-weight:800;margin-top:8px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+.card{border:1px solid #eaecf0;border-radius:18px;padding:18px;background:#fff}
+.card b{font-size:20px;display:block;margin-top:9px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.box{background:#f8fafc;border-radius:18px;padding:24px;min-height:210px}
+.box h3{margin-top:0}
+.row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #eaecf0}
+.cta{border:0;background:#101828;color:#fff;border-radius:12px;padding:12px 18px;cursor:pointer}
+@media(max-width:850px){.side{width:180px}.cards{grid-template-columns:1fr 1fr}.main{padding:22px}}
+</style>
+</head>
+<body>
+<div class="shell"><div class="app">
+<aside class="side">
+<div class="brand">MoneyMap</div><div class="sub">Your personal money OS</div>
+<div class="nav">
+<button class="active" onclick="show('home',this)">⌂ &nbsp; Home</button>
+<button onclick="show('personal',this)">◉ &nbsp; Personal</button>
+<button onclick="show('budget',this)">◒ &nbsp; Budget</button>
+<button onclick="show('bills',this)">▣ &nbsp; Bills</button>
+<button onclick="show('savings',this)">◷ &nbsp; Savings</button>
+<button onclick="show('tax',this)">▤ &nbsp; Tax</button>
+<button onclick="show('reports',this)">▥ &nbsp; Reports</button>
+<button onclick="show('settings',this)">⚙ &nbsp; Settings</button>
+</div>
+</aside>
+<main class="main">
+<div class="top"><div><h1 id="title">Good morning, Chinonye</h1><div class="muted" id="subtitle">Your financial picture, in one place.</div></div>
+<button class="cta" onclick="show('reports',document.querySelectorAll('.nav button')[6])">View report →</button></div>
+
+<section id="home" class="panel active">
+<div class="balance"><small>Available to spend</small><div class="amount">₦185,400</div><small>This month&nbsp;&nbsp; +12.4%</small></div>
+<div class="cards"><div class="card">Personal<b>₦1.24m</b></div><div class="card">Budget<b>64%</b></div><div class="card">Bills<b>86%</b></div><div class="card">Savings<b>72%</b></div></div>
+<div class="grid"><div class="box"><h3>MoneyMap insight</h3><p class="muted">You can spend ₦85,000 after essentials and still stay on track with your savings goal.</p><button class="cta" onclick="show('budget',document.querySelectorAll('.nav button')[2])">View spending plan →</button></div>
+<div class="box"><h3>Upcoming</h3><div class="row"><span>Rent</span><b>₦120,000</b></div><div class="row"><span>Internet</span><b>₦25,000</b></div><div class="row"><span>Savings transfer</span><b>₦40,000</b></div></div></div>
+</section>
+
+<section id="personal" class="panel"><h2>Personal</h2><div class="grid"><div class="box"><h3>Net position</h3><div class="amount">₦1.24m</div><p class="muted">Assets, cash and obligations in one view.</p></div><div class="box"><h3>Money profile</h3><p>Monthly income · Essentials · Flexible spending · Goals</p></div></div></section>
+<section id="budget" class="panel"><h2>Budget</h2><div class="grid"><div class="box"><h3>Monthly budget</h3><p>Essentials: ₦210,000</p><p>Flexible: ₦90,000</p><p>Savings: ₦80,000</p></div><div class="box"><h3>Safe-to-spend</h3><div class="amount">₦85,000</div><p class="muted">After planned essentials and goals.</p></div></div></section>
+<section id="bills" class="panel"><h2>Bills</h2><div class="box"><div class="row"><span>Rent</span><b>₦120,000</b></div><div class="row"><span>Internet</span><b>₦25,000</b></div><div class="row"><span>Electricity</span><b>₦18,000</b></div></div></section>
+<section id="savings" class="panel"><h2>Savings</h2><div class="grid"><div class="box"><h3>Emergency fund</h3><div class="amount">72%</div><p>₦48,500 of ₦67,000 goal</p></div><div class="box"><h3>Next milestone</h3><p class="muted">Keep your current pace for another 3 weeks.</p></div></div></section>
+<section id="tax" class="panel"><h2>Tax</h2><div class="box"><h3>Tax planning workspace</h3><p class="muted">Concept area for estimated tax obligations, reminders and documentation. No real tax advice or filing is performed.</p></div></section>
+<section id="reports" class="panel"><h2>Reports</h2><div class="grid"><div class="box"><h3>Monthly spending</h3><p>Essentials · 58%</p><p>Flexible · 24%</p><p>Savings · 18%</p></div><div class="box"><h3>Financial trend</h3><p class="muted">Income, spending and savings trends would appear here.</p></div></div></section>
+<section id="settings" class="panel"><h2>Settings</h2><div class="box"><h3>Preferences</h3><p class="muted">Notifications · Categories · Goals · Security</p></div></section>
+</main></div></div>
+<script>
+function show(id,btn){
+document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));
+btn.classList.add('active');
+let titles={home:'Good morning, Chinonye',personal:'Your personal profile',budget:'Plan your spending',bills:'Stay ahead of bills',savings:'Build your future',tax:'Tax planning workspace',reports:'Your financial reports',settings:'Your preferences'};
+document.getElementById('title').textContent=titles[id];
+document.getElementById('subtitle').textContent=id==='home'?'Your financial picture, in one place.':'Interactive MoneyMap concept.';
+window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>

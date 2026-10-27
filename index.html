@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MoneyMap — Interactive Prototype</title>
+<meta name="description" content="MoneyMap is an interactive personal finance dashboard prototype for budgets, bills, savings, and reports.">
+<title>MoneyMap | Interactive Finance Dashboard Prototype</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#f5f7fa;font-family:Arial,sans-serif;color:#101828}
@@ -52,7 +53,7 @@ h2{font-size:25px}
 </div>
 </aside>
 <main class="main">
-<div class="top"><div><h1 id="title">Good morning, Chinonye</h1><div class="muted" id="subtitle">Your financial picture, in one place.</div></div>
+<div class="top"><div><h1 id="title">Good morning</h1><div class="muted" id="subtitle">Your financial picture, in one place.</div></div>
 <button class="cta" onclick="show('reports',document.querySelectorAll('.nav button')[6])">View report →</button></div>
 
 <section id="home" class="panel active">
@@ -79,7 +80,7 @@ btn.classList.add('active');
 let titles={home:'Good morning, Chinonye',personal:'Your personal profile',budget:'Plan your spending',bills:'Stay ahead of bills',savings:'Build your future',tax:'Tax planning workspace',reports:'Your financial reports',settings:'Your preferences'};
 document.getElementById('title').textContent=titles[id];
 document.getElementById('subtitle').textContent=id==='home'?'Your financial picture, in one place.':'Interactive MoneyMap concept.';
-window.scrollTo(0,0);
+window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
 </body>
